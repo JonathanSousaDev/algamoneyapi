@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,7 +20,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
@@ -31,12 +32,13 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtGra
 @EnableWebSecurity
 public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
 
+	@Autowired
+	private UserDetailsService userDetailsService;	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-		.withUser("admin")
-		.password("admin")
-		.roles("ROLE");
+		auth.userDetailsService(userDetailsService)
+		.passwordEncoder(passwordEncoder());
 	}
 
 	@Override
@@ -73,12 +75,12 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
 
 		return jwtAuthenticationConverter;
 	}
-	
+
 	@Bean
 	public JwtDecoder jwtDecoder() {
-	    String secretKeyString = "3032885ba9cd6621bcc4e7d6b6c35c2b";
-	    SecretKey secretKey = new SecretKeySpec(secretKeyString.getBytes(), "HmacSHA256");
-	    return NimbusJwtDecoder.withSecretKey(secretKey).build();
+		String secretKeyString = "3032885ba9cd6621bcc4e7d6b6c35c2b";
+		SecretKey secretKey = new SecretKeySpec(secretKeyString.getBytes(), "HmacSHA256");
+		return NimbusJwtDecoder.withSecretKey(secretKey).build();
 	}
 
 	@Bean
@@ -89,12 +91,6 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return NoOpPasswordEncoder.getInstance();
+		return new BCryptPasswordEncoder();
 	}
-	
-	@Bean
-	@Override
-	public UserDetailsService userDetailsServiceBean() throws Exception {
-	   return super.userDetailsServiceBean();
-	} 
 }
