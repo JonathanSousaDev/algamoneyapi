@@ -12,15 +12,18 @@ CREATE TABLE lancamento (
 	FOREIGN KEY (codigo_pessoa) REFERENCES pessoa(codigo)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO lancamento (`codigo`, `descricao`, `data_vencimento`, `data_pagamento`, `valor`, `tipo`, `codigo_categoria`, `codigo_pessoa`) VALUES ('1', 'Venda de Mouse', '2022-04-25', '2022-04-25', '150', 'RECEITA', '4', '1');
-INSERT INTO lancamento (`codigo`, `descricao`, `data_vencimento`, `data_pagamento`, `valor`, `tipo`, `codigo_categoria`, `codigo_pessoa`) VALUES ('2', 'Jantar com Família', '2022-03-10', NULL, '320', 'DESPESA', '3', '2');
-INSERT INTO lancamento (`codigo`, `descricao`, `data_vencimento`, `data_pagamento`, `valor`, `tipo`, `codigo_categoria`, `codigo_pessoa`) VALUES ('3', 'Mesas', '2022-01-01', NULL, '645', 'DESPESA', '3', '1');
-INSERT INTO lancamento (`codigo`, `descricao`, `data_vencimento`, `data_pagamento`, `valor`, `tipo`, `codigo_categoria`, `codigo_pessoa`) VALUES ('4', 'Teclados', '2022-01-01', '2022-04-25', '122', 'DESPESA', '1', '1');
-INSERT INTO lancamento (`codigo`, `descricao`, `data_vencimento`, `data_pagamento`, `valor`, `tipo`, `codigo_categoria`, `codigo_pessoa`) VALUES ('5', 'Componente', '2020-04-03', '2022-04-25', '195', 'DESPESA', '1', '1');
-INSERT INTO lancamento (`codigo`, `descricao`, `data_vencimento`, `data_pagamento`, `valor`, `tipo`, `codigo_categoria`, `codigo_pessoa`) VALUES ('6', 'Mousepad', '2015-04-03', '2021-04-25', '74', 'DESPESA', '1', '1');
-INSERT INTO lancamento (`codigo`, `descricao`, `data_vencimento`, `data_pagamento`, `valor`, `tipo`, `codigo_categoria`, `codigo_pessoa`) VALUES ('7', 'Reembolso Mesa', '2015-04-03', '2021-04-25', '74', 'RECEITA', '1', '1');
-INSERT INTO lancamento (`codigo`, `descricao`, `data_vencimento`, `data_pagamento`, `valor`, `tipo`, `codigo_categoria`, `codigo_pessoa`) VALUES ('9', 'Restituição Salarial', '2010-04-03', '2011-04-25', '197', 'RECEITA', '1', '1');
-INSERT INTO lancamento (`codigo`, `descricao`, `data_vencimento`, `data_pagamento`, `valor`, `tipo`, `codigo_categoria`, `codigo_pessoa`) VALUES ('10', 'Novo Salário', '2017-04-03', '2011-04-25', '4500', 'RECEITA', '1', '1');
-INSERT INTO lancamento (`codigo`, `descricao`, `data_vencimento`, `data_pagamento`, `valor`, `tipo`, `codigo_categoria`, `codigo_pessoa`) VALUES ('11', 'Mesas teste 11', '2022-01-01', NULL, '645', 'DESPESA', '3', '1');
-INSERT INTO lancamento (`codigo`, `descricao`, `data_vencimento`, `data_pagamento`, `valor`, `tipo`, `codigo_categoria`, `codigo_pessoa`) VALUES ('12', 'Teclados teste 12 ', '2022-01-01', '2022-04-25', '122', 'DESPESA', '1', '1');
-INSERT INTO lancamento (`codigo`, `descricao`, `data_vencimento`, `data_pagamento`, `valor`, `tipo`, `codigo_categoria`, `codigo_pessoa`) VALUES ('13', 'Componente teste 13', '2020-04-03', '2022-04-25', '195', 'DESPESA', '1', '1');
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Salário mensal', '2017-06-10', null, 6500.00, 'Distribuição de lucros', 'RECEITA', 1, 1);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Bahamas', '2017-02-10', '2017-02-10', 100.32, null, 'DESPESA', 2, 2);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Top Club', '2017-06-10', null, 120, null, 'RECEITA', 3, 3);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('CEMIG', '2017-02-10', '2017-02-10', 110.44, 'Geração', 'RECEITA', 3, 4);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('DMAE', '2017-06-10', null, 200.30, null, 'DESPESA', 3, 5);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Extra', '2017-03-10', '2017-03-10', 1010.32, null, 'RECEITA', 4, 6);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Bahamas', '2017-06-10', null, 500, null, 'RECEITA', 1, 7);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Top Club', '2017-03-10', '2017-03-10', 400.32, null, 'DESPESA', 4, 8);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Despachante', '2017-06-10', null, 123.64, 'Multas', 'DESPESA', 3, 9);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Pneus', '2017-04-10', '2017-04-10', 665.33, null, 'RECEITA', 5, 10);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Café', '2017-06-10', null, 8.32, null, 'DESPESA', 1, 5);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Eletrônicos', '2017-04-10', '2017-04-10', 2100.32, null, 'DESPESA', 5, 4);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Instrumentos', '2017-06-10', null, 1040.32, null, 'DESPESA', 4, 3);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Café', '2017-04-10', '2017-04-10', 4.32, null, 'DESPESA', 4, 2);
+INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Lanche', '2017-06-10', null, 10.20, null, 'DESPESA', 4, 1);
